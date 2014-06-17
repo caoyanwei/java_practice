@@ -20,7 +20,7 @@
         <param-value>classpath:log/log4j.xml</param-value>
     </context-param>
 
-    <!--Spring默认刷新Log4j配置文件的间隔,单位为毫秒-->
+    <!--Spring默认刷新Log4j配置文件的间隔,单位为毫秒。比如修改log4j配置文件后，不需要重启应用服务器-->
     <context-param>
         <param-name>log4jRefreshInterval</param-name>
         <param-value>60000</param-value>

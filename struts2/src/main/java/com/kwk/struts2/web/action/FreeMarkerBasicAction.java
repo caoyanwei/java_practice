@@ -3,7 +3,7 @@ package com.kwk.struts2.web.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class MainAction extends ActionSupport {
+public class FreeMarkerBasicAction extends ActionSupport {
     private String name;
 
     public String execute() throws Exception {

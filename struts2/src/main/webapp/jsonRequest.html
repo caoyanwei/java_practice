@@ -1,0 +1,33 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>main</title>
+</head>
+
+<body>
+<!-- @ main -->
+<div>
+    <p id="clickMe">click me</p>
+</div>
+<!-- /@ main -->
+<script type="text/javascript" src="/js/jquery-1.11.1.js"></script>
+
+<script>
+    $(function () {
+
+        $('#clickMe').click(function () {
+            $.post('/json', {name: "kongkong", age: 12})
+                    .success(function () {
+                        alert('success');
+                    })
+                    .error(function () {
+                        alert('error');
+                    });
+        });
+
+    });
+
+</script>
+</body>
+</html>

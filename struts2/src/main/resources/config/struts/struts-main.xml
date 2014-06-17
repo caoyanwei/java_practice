@@ -5,11 +5,20 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-    <package name="main" namespace="/" extends="struts-default">
+    <package name="main" namespace="/" extends="json-default">
         <!-- 首页 -->
-        <action name="index"
-                class="com.kwk.struts2.web.action.MainAction">
+        <action name="freemarker"
+                class="com.kwk.struts2.web.action.FreeMarkerBasicAction">
             <result name="success" type="freemarker">/WEB-INF/pages/main.ftl</result>
+        </action>
+
+        <action name="json"
+                class="com.kwk.struts2.web.action.JsonBasicAction">
+            <result type="json">
+                <param name="name">name</param>
+                <param name="age">age</param>
+                <param name="ignoreHierarchy">true</param>
+            </result>
         </action>
     </package>
 </struts>
