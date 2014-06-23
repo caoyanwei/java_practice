@@ -13,6 +13,7 @@
     <modules>
         <module>./utils</module>
         <module>./struts2</module>
+        <module>./js</module>
     </modules>
 
     <properties>
