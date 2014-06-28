@@ -8,3 +8,4 @@
 hub.jsp
 .DS_Store
 **/target
+/js/webRoot/logs/**
