@@ -12,6 +12,7 @@
 
     <modules>
         <module>./utils</module>
+        <module>./spring</module>
         <module>./struts2</module>
         <module>./js</module>
     </modules>
