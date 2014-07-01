@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -7,13 +7,18 @@
 </head>
 <body>
 <div>
-    <p id="hello_id" class="font_b">hello</p>
+    <p id="hello_id" class="font_b">click me</p>
+    <p class="font_b">aaaaaa</p>
+    <p class="font_b">bbbbbb</p>
+    <p class="font_b">cccccc</p>
 </div>
 <script type="text/javascript" src="/js/jquery-1.11.1.js"></script>
 <script>
     $(function () {
-        $("#hello_id").click(function () {
-            alert("hello");
+        $("#hello_id").click(function (e) {
+            //alert("hello");
+            console.log($("#hello_id")[0]);
+            console.log($(".font_b").get(1));
         });
     });
 </script>
