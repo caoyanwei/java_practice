@@ -1,0 +1,86 @@
+[
+  {
+    "cardId": "100",
+    "cardTitle": "小肥羊打折卡",
+    "cardDesc": [
+      {
+        "index": "1",
+        "text": "全场7折"
+      },
+      {
+        "index": "2",
+        "text": "多店适用"
+      }
+    ],
+    "companyInfo": {
+      "companyId": "1001",
+      "companyName": "小肥羊有限公司",
+      "licenseCode": "31011500000",
+      "businessContent": "餐饮企业管理.....",
+      "companyType": "有限责任公司",
+      "companyBeginDate": "2001-01-01 00:00:00",
+      "companyEndDate": "2028-08-08 00:00:00"
+    },
+    "picUrl": "http://welife/pic/1000001.png",
+    "effectiveBeginDate": "2014-06-10",
+    "effectiveEndDate": "2014-06-20",
+    "shops": [
+    {
+        "shopId": 1489,
+        "cityName": "上海",
+        "shopName": "小肥羊中山公园店",
+        "address": "长宁路589号",
+        "tel": "15800000000"
+    },
+    {
+        "shopId": 1499,
+        "cityName": "上海",
+        "shopName": "小肥羊世纪公园店",
+        "address": "世纪公园大厦89号",
+        "tel": "15800000000"
+    }
+    ]
+  },
+  {
+      "cardId": "101",
+      "cardTitle": "小肥羊打折卡",
+      "cardDesc": [
+        {
+          "index": "1",
+          "text": "全场7折"
+        },
+        {
+          "index": "2",
+          "text": "多店适用"
+        }
+      ],
+      "companyInfo": {
+        "companyId": "1001",
+        "companyName": "小肥羊有限公司",
+        "licenseCode": "31011500000",
+        "businessContent": "餐饮企业管理.....",
+        "companyType": "有限责任公司",
+        "companyBeginDate": "2001-01-01 00:00:00",
+        "companyEndDate": "2028-08-08 00:00:00"
+      },
+      "picUrl": "http://welife/pic/1000001.png",
+      "effectiveBeginDate": "2014-06-10 00:00:00",
+      "effectiveEndDate": "2014-06-20 23:59:59",
+      "shops": [
+        {
+            "shopId": 1489,
+            "cityName": "上海",
+            "shopName": "小肥羊中山公园店",
+            "address": "长宁路589号",
+            "tel": "15800000000"
+        },
+        {
+            "shopId": 1499,
+            "cityName": "上海",
+            "shopName": "小肥羊世纪公园店",
+            "address": "世纪公园大厦89号",
+            "tel": "15800000000"
+        }
+      ]
+  }
+]

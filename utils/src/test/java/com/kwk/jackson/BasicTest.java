@@ -5,7 +5,9 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,6 +34,16 @@ public class BasicTest {
         String ret2 = Objects.toStringHelper(innerAccessLog2).add("staffId", innerAccessLog2.getStaffId()).add("url", innerAccessLog2.getUrl())
                 .add("utcTime", innerAccessLog2.getUtcTime()).toString();
         System.out.println(ret2);
+    }
+
+    @Test
+    public void test2() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<String> des = new ArrayList<String>();
+        des.add("aaaa");
+        des.add("bbbb");
+        String s = objectMapper.writeValueAsString(des);
+        System.out.println(s);
     }
 }
 
