@@ -8,13 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: yanwei.cao
- * Date: 14-5-28
- * Time: 下午3:46
- * To change this template use File | Settings | File Templates.
- */
+
 public class JacksonBasicTest {
 
     //@Test
