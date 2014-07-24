@@ -12,13 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created with IntelliJ IDEA.
- * User: yanwei.cao
- * Date: 14-5-26
- * Time: 下午4:33
- * To change this template use File | Settings | File Templates.
- */
+
 public class ObjectTest {
 
     @Test

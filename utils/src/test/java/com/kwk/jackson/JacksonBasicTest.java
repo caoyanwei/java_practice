@@ -2,7 +2,6 @@ package com.kwk.jackson;
 
 import com.google.common.base.Objects;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,9 +15,9 @@ import java.util.List;
  * Time: 下午3:46
  * To change this template use File | Settings | File Templates.
  */
-public class BasicTest {
+public class JacksonBasicTest {
 
-    @Test
+    //@Test
     public void basicTest() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         InnerAccessLog innerAccessLog = new InnerAccessLog();
@@ -36,7 +35,7 @@ public class BasicTest {
         System.out.println(ret2);
     }
 
-    @Test
+   // @Test
     public void test2() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         List<String> des = new ArrayList<String>();
