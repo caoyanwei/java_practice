@@ -1,5 +1,6 @@
 package com.kwk.guava;
 
+import com.google.common.base.Joiner;
 import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.Lists;
@@ -7,6 +8,7 @@ import com.google.common.collect.Sets;
 import junit.framework.Assert;
 import org.junit.Test;
 
+import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -65,6 +67,44 @@ public class ObjectTest {
         Assert.assertSame(persons.get(1), p3);
         Assert.assertSame(persons.get(2), p2);
     }
+
+    @Test
+    public void testDiff() {
+        Person p1 = new Person(20, "aaaa");
+        Person p2 = new Person(20, "bbbb");
+        String ret = MyCompare.start()
+                .compare("age", p1.getAge(), p2.getAge())
+                .compare("name", p1.getName(), p2.getName())
+                .toString();
+        System.out.println(ret);
+    }
+}
+
+class MyCompare {
+    private List<String> diff;
+
+    private MyCompare() {
+        diff = Lists.newArrayList();
+    }
+
+    public static MyCompare start() {
+        return new MyCompare();
+    }
+
+    public MyCompare compare(String key, Object a, Object b) {
+        if (!Objects.equal(a, b)) {
+            diff.add(MessageFormat.format("{0}有差异: {1}, {2}", key, a, b));
+        }
+        return this;
+    }
+
+    public boolean isSame() {
+        return diff.isEmpty();
+    }
+
+    public String toString() {
+        return Joiner.on("\r\n").join(diff);
+    }
 }
 
 class Person {
@@ -105,3 +145,5 @@ class Person {
         return name;
     }
 }
+
+

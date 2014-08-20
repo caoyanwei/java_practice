@@ -18,11 +18,14 @@ public class EchoServer {
     }
 
     public void start() throws Exception {
+
         EventLoopGroup group = new NioEventLoopGroup();
+        EventLoopGroup childGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap();
 
-            b.group(group).channel(NioServerSocketChannel.class)
+
+            b.group(group,childGroup).channel(NioServerSocketChannel.class)
                     .localAddress(new InetSocketAddress(port))
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
@@ -38,5 +41,10 @@ public class EchoServer {
         } finally {
             group.shutdownGracefully().sync();
         }
+    }
+
+    public static void main(String args[]) throws Exception {
+        EchoServer server = new EchoServer(885);
+        server.start();
     }
 }
