@@ -1,5 +1,7 @@
 package com.kwk.utils;
 
+import javax.swing.*;
+
 /**
  * Created with IntelliJ IDEA.
  * User: yanwei.cao
@@ -9,6 +11,6 @@ package com.kwk.utils;
  */
 public class A {
     public static void main(String[] args) {
-
+        JTable btn = null;
     }
 }
