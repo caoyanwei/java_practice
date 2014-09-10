@@ -16,6 +16,7 @@
         <module>./struts2</module>
         <module>./js</module>
         <module>./alg</module>
+        <module>./aspectj</module>
     </modules>
 
     <properties>
