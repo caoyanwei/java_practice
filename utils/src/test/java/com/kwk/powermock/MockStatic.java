@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({SystemPropertyMockDemo.class})
-public class SystemPropertyMockDemoTest {
+public class MockStatic {
     @Test
     public void demoOfFinalSystemClassMocking() throws Exception {
         PowerMockito.mockStatic(System.class);
