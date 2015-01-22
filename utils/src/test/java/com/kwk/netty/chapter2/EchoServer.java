@@ -1,5 +1,6 @@
 package com.kwk.netty.chapter2;
 
+import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -41,6 +42,8 @@ public class EchoServer {
         } finally {
             group.shutdownGracefully().sync();
         }
+
+        Bootstrap b = null;
     }
 
     public static void main(String args[]) throws Exception {
