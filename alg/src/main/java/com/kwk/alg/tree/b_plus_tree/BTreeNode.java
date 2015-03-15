@@ -64,7 +64,8 @@ abstract class BTreeNode<TKey extends Comparable<TKey>> {
 		TKey upKey = this.getKey(midIndex);
 		
 		BTreeNode<TKey> newRNode = this.split();
-				
+
+        //根结点
 		if (this.getParent() == null) {
 			this.setParent(new BTreeInnerNode<TKey>());
 		}
