@@ -2,7 +2,6 @@
 /.project
 *.iml
 */*.iml
-*/*.iml
 .idea/
 *.orig
 hub.jsp

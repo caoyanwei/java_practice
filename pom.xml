@@ -16,6 +16,7 @@
         <module>./struts2</module>
         <module>./js</module>
         <module>./alg</module>
+        <module>./lucence</module>
         <!--<module>./aspectj</module>-->
     </modules>
 
@@ -31,8 +32,6 @@
 
     <dependencyManagement>
         <dependencies>
-
-
             <!-- begining of spring framework -->
             <dependency>
                 <groupId>org.springframework</groupId>
