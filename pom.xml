@@ -17,6 +17,7 @@
         <module>./js</module>
         <module>./alg</module>
         <module>./lucence</module>
+        <module>./spring_mvc</module>
         <!--<module>./aspectj</module>-->
     </modules>
 
