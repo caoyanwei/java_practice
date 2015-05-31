@@ -11,27 +11,40 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <!--<context:annotation-config/>-->
+    <context:annotation-config/>
 
-    <mvc:annotation-driven />
+    <!--不要使用此配置，容易引起冲突-->
+    <!--<mvc:annotation-driven />-->
 
     <bean id="officeHoursInterceptor" class="com.kwk.MyInterceptor">
         <property name="openingTime" value="0"/>
         <property name="closingTime" value="24"/>
     </bean>
 
-    <mvc:interceptors>
-        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <mvc:exclude-mapping path="/admin/**"/>
-            <ref bean="officeHoursInterceptor" />
-        </mvc:interceptor>
-        <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/secure/*"/>-->
-            <!--<ref bean="officeHoursInterceptor" />-->
-        <!--</mvc:interceptor>-->
-    </mvc:interceptors>
+    <bean id="handlerMapping"
+          class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+        <property name="interceptors">
+            <list>
+                <ref bean="officeHoursInterceptor"/>
+            </list>
+        </property>
+        <property name="order" value="0"/>
+    </bean>
+
+    <bean id="handlerAdapter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <!--<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>-->
+                <!--<bean class="org.springframework.http.converter.ResourceHttpMessageConverter"/>-->
+                <!--<bean class="org.springframework.http.converter.StringHttpMessageConverter"/>-->
+                <!--<bean class="org.springframework.http.converter.feed.AtomFeedHttpMessageConverter"/>-->
+                <!--<bean class="org.springframework.http.converter.feed.RssChannelHttpMessageConverter"/>-->
+                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
+                <!-- bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" /-->
+            </list>
+        </property>
+    </bean>
 
     <bean id="handlerExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
@@ -81,6 +94,4 @@
         </property>
     </bean>
 
-    <!--<mvc:resources location="/" mapping="/**"/>-->
-    <!--<mvc:default-servlet-handler />-->
 </beans>
