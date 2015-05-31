@@ -11,7 +11,9 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <context:annotation-config/>
+    <!--<context:annotation-config/>-->
+
+    <mvc:annotation-driven />
 
     <bean id="officeHoursInterceptor" class="com.kwk.MyInterceptor">
         <property name="openingTime" value="0"/>
@@ -31,11 +33,11 @@
         <!--</mvc:interceptor>-->
     </mvc:interceptors>
 
-    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+    <bean id="handlerExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
             <props>
-                <prop key="java.lang.IllegalArgumentException">error/405</prop>
-                <prop key="java.lang.exception">error/500</prop>
+                <prop key="java.lang.IllegalArgumentException">error/501.jsp</prop>
+                <prop key="java.lang.exception">error/500.jsp</prop>
             </props>
         </property>
     </bean>

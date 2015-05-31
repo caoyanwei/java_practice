@@ -74,6 +74,10 @@
     </listener>
 
     <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/WEB-INF/jsp/error/405.jsp</location>
+    </error-page>
+    <error-page>
         <error-code>405</error-code>
         <location>/WEB-INF/jsp/error/405.jsp</location>
     </error-page>

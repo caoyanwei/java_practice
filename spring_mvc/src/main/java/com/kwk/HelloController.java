@@ -18,7 +18,7 @@ public class HelloController {
     @Resource
     private TestService testService;
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    @RequestMapping(value = "/hello1", method = RequestMethod.GET)
     public String printHello(ModelMap model) {
         model.addAttribute("message", testService.dump());
         return "hello.jsp";
@@ -40,7 +40,7 @@ public class HelloController {
     public String printHello4(ModelMap model,
                               @RequestParam(value = "age", required = false) Integer age) {
         if (age == null) {
-            return "forward:/hello";
+            return "forward:/hello1";
         }
 
         User user1 = new User(10, "user1");
@@ -90,15 +90,19 @@ public class HelloController {
         throw new IllegalArgumentException("invalid para");
     }
 
-//    @ExceptionHandler(IOException.class)
-//    public ResponseEntity<String> handleIOException(IOException ex) {
-//        // prepare responseEntity
-//        return responseEntity;
-//    }
+    @RequestMapping(value = "/json1", method = RequestMethod.GET)
+    public @ResponseBody User json1() {
+        User user = new User(10, "aaaa");
+        return user;
+    }
 
     public static class User {
         private int age;
         private String name;
+
+        public User() {
+
+        }
 
         public User(int age, String name) {
             this.age = age;

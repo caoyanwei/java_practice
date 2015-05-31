@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kwk.dao.StudentMapper">
+
+    <resultMap type="com.kwk.dao.StudentEntity" id="studentResultMap">
+        <id property="id" column="Id"/>
+        <result property="name" column="Name"/>
+    </resultMap>
+
+    <!-- 查询学生，根据id -->
+    <select id="getStudent" parameterType="int" resultMap="studentResultMap">
+        <![CDATA[
+            SELECT Id, Name from Student where Id = #{Id}
+        ]]>
+    </select>
+
+</mapper>
