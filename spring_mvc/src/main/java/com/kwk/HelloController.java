@@ -33,7 +33,7 @@ public class HelloController {
     @RequestMapping(value = "/hello3", method = RequestMethod.GET)
     public String printHello3(ModelMap model) {
         model.addAttribute("message", testService.dump());
-        return "forward:/hello";
+        return "forward:/hello1";
     }
 
     @RequestMapping(value = "/hello4", method = RequestMethod.GET)
