@@ -18,6 +18,7 @@
         <module>./alg</module>
         <module>./lucence</module>
         <module>./spring_mvc</module>
+        <module>./hadoop</module>
         <!--<module>./aspectj</module>-->
     </modules>
 
