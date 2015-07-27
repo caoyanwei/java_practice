@@ -3,6 +3,7 @@ package com.kwk.joda;
 
 import ognl.OgnlException;
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.joda.time.MutableDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -40,5 +41,13 @@ public class JodaTest {
         String expr = "dayOfWeek == 2 && now.timeBetween(\"12:30\", \"17:30\") && now.dateBetween(\"2014-06-09\", \"2014-8-10\")";
         boolean ret = TimeLimitChecker.isValid(Calendar.getInstance(), expr);
         System.out.println(ret);
+    }
+
+    @Test
+    public void localDateTest() {
+        String nowDateStr = "20120508";
+        DateTimeFormatter format = DateTimeFormat.forPattern("yyyyMMdd");
+        LocalDate now = LocalDate.parse(nowDateStr, format);
+        System.out.println(now);
     }
 }
