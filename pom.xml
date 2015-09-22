@@ -19,6 +19,7 @@
         <module>./lucence</module>
         <module>./spring_mvc</module>
         <module>./hadoop</module>
+        <module>./antlr</module>
         <!--<module>./aspectj</module>-->
     </modules>
 
