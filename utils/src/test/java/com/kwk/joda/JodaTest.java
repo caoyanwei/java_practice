@@ -50,4 +50,13 @@ public class JodaTest {
         LocalDate now = LocalDate.parse(nowDateStr, format);
         System.out.println(now);
     }
+
+    @Test
+    public void secondOfDayTest() {
+        DateTime now = new DateTime();
+        DateTime begin = now.secondOfDay().withMinimumValue();
+        DateTime end = now.secondOfDay().withMaximumValue();
+        System.out.println(begin.toDate());
+        System.out.println(end.toDate());
+    }
 }
