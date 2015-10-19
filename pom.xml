@@ -20,6 +20,7 @@
         <module>./spring_mvc</module>
         <module>./hadoop</module>
         <module>./antlr</module>
+        <module>./mypwd</module>
         <!--<module>./aspectj</module>-->
     </modules>
 
