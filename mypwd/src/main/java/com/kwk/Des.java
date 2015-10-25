@@ -27,7 +27,7 @@ public class Des {
      */
     public static String encrypt(String data, String key) {
         try {
-            byte[] bt = encrypt(data.getBytes(StandardCharsets.UTF_8), key.getBytes(StandardCharsets.UTF_8));
+            byte[] bt = encrypt(data.getBytes(StandardCharsets.UTF_8), HashHelper.md5(key));
             String tmpStr = new String(Base64.encodeBase64(bt), StandardCharsets.UTF_8);
             return tmpStr;
         } catch (Exception e) {
@@ -52,7 +52,7 @@ public class Des {
         }
 
         byte[] buf = Base64.decodeBase64(data.getBytes(StandardCharsets.UTF_8));
-        byte[] bt = decrypt(buf, key.getBytes(StandardCharsets.UTF_8));
+        byte[] bt = decrypt(buf, HashHelper.md5(key));
         return new String(bt, StandardCharsets.UTF_8);
     }
 

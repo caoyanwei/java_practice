@@ -6,19 +6,18 @@ import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.google.common.io.Files;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 
 public class Article {
     public static final String PLAIN_HEAD = "asd#123!&*RE);{~bz<|784P";
-    public static final String DEFAULT_PATH = "C:/a.bin";
+    public static final String FILE_NAME = "pwd.bin";
 
     private String head;
     private String content;
 
-    private String realHead;
     private String realContent;
 
     private boolean hasCheckPassword = false;
@@ -32,8 +31,20 @@ public class Article {
         return article;
     }
 
+    private static String getPath() {
+        String path = null;
+        try {
+            path = Article.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+        } catch (URISyntaxException e) {
+            throw new IllegalArgumentException();
+        }
+        File jarPath = new File(path);
+        File file = new File(jarPath.getParent(), FILE_NAME);
+        return file.getPath();
+    }
+
     private static File getFile() {
-        File file = new File(DEFAULT_PATH);
+        File file = new File(getPath());
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -90,7 +101,15 @@ public class Article {
     }
 
     private void decrypt() {
-        // TODO
+        if (Strings.isNullOrEmpty(content)) {
+            return;
+        }
+
+        try {
+            realContent = Des.decrypt(content, password);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public String getContent() {
@@ -103,13 +122,30 @@ public class Article {
 
     public void save(String content) {
         if (!hasCheckPassword) {
-            throw new IllegalStateException();
+            return;
         }
         doSave(content);
     }
 
     private void doSave(String content) {
-        // TODO
+        OutputStreamWriter out = null;
+        try {
+            out = new OutputStreamWriter(new FileOutputStream(file), Charsets.UTF_8);
+            out.write(Des.encrypt(Article.PLAIN_HEAD, password));
+            out.write("\r\n");
+            out.write(Des.encrypt(content, password));
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
 }
