@@ -1,5 +1,6 @@
 package com.kwk;
 
+import com.google.common.base.Charsets;
 import org.apache.commons.codec.binary.Base64;
 
 import javax.crypto.Cipher;
@@ -7,7 +8,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.Charset;
 
 public class Des {
     private final static String DES = "DES";
@@ -16,6 +17,8 @@ public class Des {
 
     private final static char[] hexDigits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
             'a', 'b', 'c', 'd', 'e', 'f'};
+
+    private final static Charset UTF_8 = Charsets.UTF_8;
 
     /**
      * Description 根据键值进行加密
@@ -27,8 +30,8 @@ public class Des {
      */
     public static String encrypt(String data, String key) {
         try {
-            byte[] bt = encrypt(data.getBytes(StandardCharsets.UTF_8), HashHelper.md5(key));
-            String tmpStr = new String(Base64.encodeBase64(bt), StandardCharsets.UTF_8);
+            byte[] bt = encrypt(data.getBytes(UTF_8), HashHelper.md5(key));
+            String tmpStr = new String(Base64.encodeBase64(bt), UTF_8);
             return tmpStr;
         } catch (Exception e) {
             e.printStackTrace();
@@ -51,9 +54,9 @@ public class Des {
             return null;
         }
 
-        byte[] buf = Base64.decodeBase64(data.getBytes(StandardCharsets.UTF_8));
+        byte[] buf = Base64.decodeBase64(data.getBytes(UTF_8));
         byte[] bt = decrypt(buf, HashHelper.md5(key));
-        return new String(bt, StandardCharsets.UTF_8);
+        return new String(bt, UTF_8);
     }
 
 

@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class UIs {
     private static final String FALLBACK_FONT_FAMILY_NAME = Font.SANS_SERIF;
-    private static final Map<String, String> FONT_FAMILY_NAMES = new HashMap<>();
+    private static final Map<String, String> FONT_FAMILY_NAMES = new HashMap<String, String>();
 //    private static final String[] BEST_FONT_FAMILIES = {
 //            "微软雅黑", "arial", "sans-serif"
 //    };

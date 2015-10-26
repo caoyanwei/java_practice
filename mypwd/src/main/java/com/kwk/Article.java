@@ -1,15 +1,18 @@
 package com.kwk;
 
 import com.google.common.base.Charsets;
+import com.google.common.base.Objects;
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.google.common.io.Files;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Objects;
 
 public class Article {
     public static final String PLAIN_HEAD = "asd#123!&*RE);{~bz<|784P";
@@ -86,7 +89,7 @@ public class Article {
             return true;
         } else {
             String secretHead = Des.encrypt(Article.PLAIN_HEAD, password);
-            if (Objects.equals(secretHead, head)) {
+            if (Objects.equal(secretHead, head)) {
                 setPassword(password);
                 return true;
             }
