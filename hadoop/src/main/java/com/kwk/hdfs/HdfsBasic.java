@@ -2,32 +2,102 @@ package com.kwk.hdfs;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
+import org.apache.hadoop.hdfs.DistributedFileSystem;
+import org.apache.hadoop.hdfs.protocol.DatanodeInfo;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URI;
+import java.io.InputStreamReader;
 
 
 public class HdfsBasic {
-    public static void main(String[] args) throws IOException {
+
+    public static void main(String[] args) throws Exception {
+        System.setProperty("HADOOP_USER_NAME", "caoyanwei");
         Configuration conf = new Configuration();
-        Path inputDir = new Path("E:/KwDownload");
-        String serverPath = "hdfs://192.168.146.128:9000/test";
-        Path hdfsfile = new Path(serverPath);
-        FileSystem hdfs = FileSystem.get(URI.create(serverPath), conf);
+        conf.set("fs.defaultFS", "hdfs://192.168.11.130:9000");
+        conf.set("dfs.permission", "false");
+        conf.setBoolean("dfs.support.append", true);
+//        testCreate(conf);
+        testRead(conf);
+//        testGetHostName(conf);
+    }
 
-        FileSystem local = FileSystem.getLocal(conf);
-        FileStatus[] status = local.listStatus(inputDir);
-        FSDataOutputStream out = hdfs.create(hdfsfile);
+    private static void testRead(Configuration conf) throws IOException {
+        String hdfsPath = "hdfs://192.168.11.130:9000/cyw";
+        Path dst = new Path(hdfsPath + "/hello.txt");
 
-        for(int i = 0; i < status.length; i++) {
-            FSDataInputStream in = local.open(status[i].getPath());
-            byte buffer[] = new byte[256];
-            int byteread = 0;
-            while((byteread = in.read(buffer)) > 0) {
-                out.write(buffer);
+        FileSystem hdfs = FileSystem.get(conf);
+        FSDataInputStream in = null;
+        try {
+            in = hdfs.open(dst);
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+            String line;
+            line = br.readLine();
+            while (line != null) {
+                System.out.println(line);
+                line = br.readLine();
             }
-            in.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (in != null) {
+                in.close();
+            }
         }
-        out.close();
+    }
+
+    //还有问题
+    private static void testAppend(Configuration conf) throws IOException {
+        String hdfsPath = "hdfs://192.168.11.130:9000/cyw";
+
+        byte[] buff = "hello world!\n".getBytes();
+        FileSystem hdfs = FileSystem.get(conf);
+        Path dst = new Path(hdfsPath + "/hello.txt");
+        FSDataOutputStream outputStream = null;
+        try {
+            outputStream = hdfs.append(dst);
+            outputStream.write(buff, 0, buff.length);
+            outputStream.hflush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (outputStream != null) {
+                outputStream.close();
+            }
+        }
+    }
+
+    private static void testGetHostName(Configuration conf) throws IOException {
+        DistributedFileSystem hdfs = (DistributedFileSystem) FileSystem.get(conf);
+        DatanodeInfo[] dataNodeStats = hdfs.getDataNodeStats();
+
+        for (DatanodeInfo dataNode : dataNodeStats) {
+            System.out.println(dataNode.getHostName() + "\t" + dataNode.getName());
+        }
+    }
+
+    public static void testCreate(Configuration conf) throws Exception {
+        String hdfsPath = "hdfs://192.168.11.130:9000/cyw";
+
+        byte[] buff = "hello world!".getBytes();
+        FileSystem hdfs = FileSystem.get(conf);
+        Path dst = new Path(hdfsPath + "/hello.txt");
+        FSDataOutputStream outputStream = null;
+        try {
+            outputStream = hdfs.create(dst);
+            outputStream.write(buff, 0, buff.length);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (outputStream != null) {
+                outputStream.close();
+            }
+        }
+
+        FileStatus files[] = hdfs.listStatus(dst);
+        for (FileStatus file : files) {
+            System.out.println(file.getPath());
+        }
     }
 }
