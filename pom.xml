@@ -11,17 +11,18 @@
     <name>practice-parent</name>
 
     <modules>
-        <module>./utils</module>
-        <module>./spring</module>
-        <module>./struts2</module>
-        <module>./js</module>
-        <module>./alg</module>
-        <module>./lucence</module>
-        <module>./spring_mvc</module>
-        <module>./hadoop</module>
-        <module>./antlr</module>
-        <module>./mypwd</module>
+        <!--<module>./utils</module>-->
+        <!--<module>./spring</module>-->
+        <!--<module>./struts2</module>-->
+        <!--<module>./js</module>-->
+        <!--<module>./alg</module>-->
+        <!--<module>./lucence</module>-->
+        <!--<module>./spring_mvc</module>-->
+        <!--<module>./hadoop</module>-->
+        <!--<module>./antlr</module>-->
+        <!--<module>./mypwd</module>-->
         <!--<module>./aspectj</module>-->
+        <module>./simpledb</module>
     </modules>
 
     <properties>
