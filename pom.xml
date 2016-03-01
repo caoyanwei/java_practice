@@ -23,6 +23,7 @@
         <!--<module>./mypwd</module>-->
         <!--<module>./aspectj</module>-->
         <module>./simpledb</module>
+        <module>./smile_test</module>
     </modules>
 
     <properties>
